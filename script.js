@@ -94,4 +94,3 @@ function startTimer(time) {
 
 startTimer(10);
 
-const SCREENS = 
