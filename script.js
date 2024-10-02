@@ -29,15 +29,15 @@ function addQuestion() {
 }
 
 // Надпись с вопросом и кнопки ответов
-const label = document.querySelector('.question');
-const buttons = document.querySelectorAll('.answer');
+const LABEL = document.querySelector('.question');
+const BUTTONS = document.querySelectorAll('.answer');
 
 // Вывод вопроса на экран
 function showQuestion(question) {
-    label.innerHTML = question.question;
+    LABEL.innerHTML = question.question;
 
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].innerHTML = question.answers[i];
+    for (let i = 0; i < BUTTONS.length; i++) {
+        BUTTONS[i].innerHTML = question.answers[i];
     }
 }
 
@@ -49,7 +49,7 @@ showQuestion(current);
 let score = 0;
 
 // Обработка нажатия на кнопку ответа
-buttons.forEach(button => {
+BUTTONS.forEach(button => {
     button.addEventListener('click', () => {
 
         // При верном ответе увеличивается счетчик
@@ -72,3 +72,26 @@ buttons.forEach(button => {
         showQuestion(current);
     })
 })
+
+
+const TIMER = document.querySelector('.timer');
+
+function startTimer(time) {
+    let counter = time;
+    TIMER.innerHTML = `${counter}с`;
+
+    const timerInterval = setInterval(() => {
+        if (counter <= 0) {
+            alert(`Время вышло! Верных ответов - ${score}`);
+            clearInterval(timerInterval);
+        }
+        else {
+            counter--
+            TIMER.innerHTML = `${counter}с`;
+        }
+    }, 1000)
+}
+
+startTimer(10);
+
+const SCREENS = 

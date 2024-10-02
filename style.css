@@ -12,6 +12,8 @@ html {
 }
 
 body {
+    font-family: sans-serif;
+
     background-color: #2C3242;
     color: #fff;
     
@@ -95,3 +97,18 @@ body {
     border: 2px solid #FF004C;
 }
 
+
+.timer {
+    margin-bottom: 12rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+    font-size: 2.4rem;
+
+    color: #fff;
+    background-color: #222632;
+}
+
+.result_screen {
+    display: none;
+}
