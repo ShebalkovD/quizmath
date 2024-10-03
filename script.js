@@ -29,7 +29,7 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 } 
 
-
+// Генерация знака для вычислений
 function getSign() {
     let counter = getRandomInt(4)
     let sign = ''
@@ -54,6 +54,8 @@ function getSign() {
 
 // Генерация нового вопроса
 function addQuestion() {
+
+    // Получение знака
     let sign = getSign()
     let question = 0
     
