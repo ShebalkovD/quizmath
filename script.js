@@ -73,6 +73,10 @@ BUTTONS.forEach(button => {
     })
 })
 
+function reset() {
+    score = 0
+}
+
 // Элемент таймера
 const TIMER = document.querySelector('.timer')
 
@@ -83,8 +87,12 @@ function startTimer(time) {
 
     const timerInterval = setInterval(() => {
         if (counter <= 0) {
-            alert(`Время вышло! Верных ответов - ${score}`)
             clearInterval(timerInterval)
+
+            SCORE_RESULT.innerHTML = score
+            changeScreen(RESULT_SCREEN)
+
+            reset()
         }
         else {
             counter--
@@ -93,12 +101,13 @@ function startTimer(time) {
     }, 1000)
 }
 
-startTimer(10)
-
 // Экраны
 const START_SCREEN = document.getElementById('start_screen')
 const MAIN_SCREEN = document.getElementById('main_screen')
 const RESULT_SCREEN = document.getElementById('result_screen')
+
+// Элемент для вывода очков на последнем экране
+const SCORE_RESULT = document.getElementById('score')
 
 // Смена экрана на выбранный
 function changeScreen(screenToGo) {
@@ -111,5 +120,20 @@ function changeScreen(screenToGo) {
     screenToGo.classList.add('active')
 }
 
-changeScreen(MAIN_SCREEN)
+// Кнопки "старт" и "рестарт"
+const START_BUTTON = document.getElementById('start_button')
+const RESTART_BUTTON = document.getElementById('restart_button')
+
+START_BUTTON.addEventListener('click', () => {
+    changeScreen(MAIN_SCREEN)
+    startTimer(10)
+})
+
+RESTART_BUTTON.addEventListener('click', () => {
+    changeScreen(MAIN_SCREEN)
+    startTimer(10)
+})
+
+// Запуск первого экрана
+changeScreen(START_SCREEN)
 
