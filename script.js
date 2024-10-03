@@ -4,6 +4,24 @@ class Question {
         this.correct = correct, 
         this.answers = [correct, answer1, answer2, answer3, answer4]
     }
+
+    shuffle() {
+        // Создаем копию исходного массива и пустой массив для перемешанных значений
+        let startArr = this.answers.slice()
+        let arr = []
+        
+        // Передаем случайный элемент в новый массив и удаляем его из старого
+        for (let i = 0; i <= 4; i++) {
+            let randNum = getRandomInt(startArr.length - 1)
+            arr.push(startArr[randNum])
+            startArr.splice(randNum, 1)
+        }
+        
+        // Переносим перемешанные значения в свойство
+        for (let i = 0; i <= this.answers.length - 1; i++) {
+            this.answers[i] = arr[i]
+        }
+    }
 }
 
 // Генерация случайного целого числа от 0 до максимального
@@ -24,6 +42,9 @@ function addQuestion() {
         getRandomInt(100),
         getRandomInt(100)
     )
+
+    // Перемешивание значений
+    question.shuffle()
 
     return question
 }
