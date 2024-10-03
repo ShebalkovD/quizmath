@@ -8,13 +8,13 @@ class Question {
 
 // Генерация случайного целого числа от 0 до максимального
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+    return Math.floor(Math.random() * max)
 }  
 
 // Генерация нового вопроса
 function addQuestion() {
-    const a = getRandomInt(100);
-    const b = getRandomInt(100);
+    const a = getRandomInt(100)
+    const b = getRandomInt(100)
 
     const question = new Question(
         `${a}+${b}`,
@@ -23,30 +23,30 @@ function addQuestion() {
         getRandomInt(100),
         getRandomInt(100),
         getRandomInt(100)
-    );
+    )
 
-    return question;
+    return question
 }
 
 // Надпись с вопросом и кнопки ответов
-const LABEL = document.querySelector('.question');
-const BUTTONS = document.querySelectorAll('.answer');
+const LABEL = document.querySelector('.question')
+const BUTTONS = document.querySelectorAll('.answer')
 
 // Вывод вопроса на экран
 function showQuestion(question) {
-    LABEL.innerHTML = question.question;
+    LABEL.innerHTML = question.question
 
     for (let i = 0; i < BUTTONS.length; i++) {
-        BUTTONS[i].innerHTML = question.answers[i];
+        BUTTONS[i].innerHTML = question.answers[i]
     }
 }
 
 // Генерация и вывод первого вопроса
-let current = addQuestion();
-showQuestion(current);
+let current = addQuestion()
+showQuestion(current)
 
 // Счетчик верных ответов
-let score = 0;
+let score = 0
 
 // Обработка нажатия на кнопку ответа
 BUTTONS.forEach(button => {
@@ -54,43 +54,62 @@ BUTTONS.forEach(button => {
 
         // При верном ответе увеличивается счетчик
         if (Number(button.innerHTML) === current.correct) {
-            score++ ;
-            button.classList.add('correct');
+            score++ 
+            button.classList.add('correct')
             setTimeout(() => {
-                button.classList.remove('correct');
-            }, 200);
+                button.classList.remove('correct')
+            }, 200)
         }
         else {
-            button.classList.add('wrong');
+            button.classList.add('wrong')
             setTimeout(() => {
-                button.classList.remove('wrong');
-            }, 200);
+                button.classList.remove('wrong')
+            }, 200)
         }
 
         // Генерация и вывод нового вопроса
-        current = addQuestion();
-        showQuestion(current);
+        current = addQuestion()
+        showQuestion(current)
     })
 })
 
+// Элемент таймера
+const TIMER = document.querySelector('.timer')
 
-const TIMER = document.querySelector('.timer');
-
+// Запуск таймера на указанное время
 function startTimer(time) {
-    let counter = time;
-    TIMER.innerHTML = `${counter}с`;
+    let counter = time
+    TIMER.innerHTML = `${counter}с`
 
     const timerInterval = setInterval(() => {
         if (counter <= 0) {
-            alert(`Время вышло! Верных ответов - ${score}`);
-            clearInterval(timerInterval);
+            alert(`Время вышло! Верных ответов - ${score}`)
+            clearInterval(timerInterval)
         }
         else {
             counter--
-            TIMER.innerHTML = `${counter}с`;
+            TIMER.innerHTML = `${counter}с`
         }
     }, 1000)
 }
 
-startTimer(10);
+startTimer(10)
+
+// Экраны
+const START_SCREEN = document.getElementById('start_screen')
+const MAIN_SCREEN = document.getElementById('main_screen')
+const RESULT_SCREEN = document.getElementById('result_screen')
+
+// Смена экрана на выбранный
+function changeScreen(screenToGo) {
+    const screens = document.querySelectorAll('.screen')
+
+    screens.forEach(screen => {
+        screen.classList.remove('active')
+    })
+
+    screenToGo.classList.add('active')
+}
+
+changeScreen(MAIN_SCREEN)
 
