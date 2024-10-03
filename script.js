@@ -27,21 +27,98 @@ class Question {
 // Генерация случайного целого числа от 0 до максимального
 function getRandomInt(max) {
     return Math.floor(Math.random() * max)
-}  
+} 
+
+
+function getSign() {
+    let counter = getRandomInt(4)
+    let sign = ''
+    
+    switch (counter) {
+        case 0:
+            sign = '+'
+            break;
+        case 1:
+            sign = '-'
+            break;
+        case 2:
+            sign = '/'
+            break;
+        case 3:
+            sign = '*'
+            break;
+    }
+
+    return sign
+}
 
 // Генерация нового вопроса
 function addQuestion() {
-    const a = getRandomInt(100)
-    const b = getRandomInt(100)
+    let sign = getSign()
+    let question = 0
+    
+    if (sign === '+') {
+        let a = getRandomInt(100)
+        let b = getRandomInt(100)
 
-    const question = new Question(
-        `${a}+${b}`,
-        a+b,
-        getRandomInt(100),
-        getRandomInt(100),
-        getRandomInt(100),
-        getRandomInt(100)
-    )
+        question = new Question(
+            `${a}+${b}`,
+            a+b,
+            a+b+getRandomInt(10),
+            a+b-getRandomInt(10),
+            getRandomInt(100),
+            getRandomInt(100)
+        )
+    }
+
+    if (sign === '-') {
+        let a = getRandomInt(100)
+        let b = getRandomInt(100)
+
+        question = new Question(
+            `${a}-${b}`,
+            a-b,
+            a-b+getRandomInt(10),
+            a+b-getRandomInt(10),
+            getRandomInt(50),
+            getRandomInt(100)
+        )
+    }
+
+    if (sign === '*') {
+        let a = getRandomInt(10)
+        let b = getRandomInt(10)
+
+        question = new Question(
+            `${a}*${b}`,
+            a*b,
+            a*b+getRandomInt(10),
+            a*b-getRandomInt(10),
+            getRandomInt(100),
+            getRandomInt(100)
+        )
+    }
+
+    if (sign === '/') {
+        let a = getRandomInt(100)
+        let b = getRandomInt(10)
+
+        while (a % b != 0) {
+            a = getRandomInt(100)
+            b = getRandomInt(10)
+        }
+
+        question = new Question(
+            `${a}/${b}`,
+            a/b,
+            a/b+getRandomInt(10),
+            a/b-getRandomInt(10),
+            getRandomInt(10),
+            getRandomInt(10)
+        )
+    }
+
+    
 
     // Перемешивание значений
     question.shuffle()
