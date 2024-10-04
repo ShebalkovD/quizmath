@@ -12,7 +12,6 @@ html {
 }
 
 body {
-  font-family: sans-serif;
   background-color: #2C3242;
   color: #fff;
   width: 100%;
@@ -26,6 +25,10 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .main_screen {
