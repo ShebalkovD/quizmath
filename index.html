@@ -8,7 +8,32 @@
 </head>
 <body>
     <section class="start_screen screen" id="start_screen">
-        <button class="btn" id="start_button">старт</button>
+        <img src="src/logo.svg" alt="" class="start_screen-logo">
+
+        <div class="container">
+            <h2 class="start_screen-title">Тренируй знания математики и реакцию</h2>
+
+            <ul class="start_screen_list">
+                <li class="start_screen_list-item">
+                    <img src="src/time.svg" alt="">
+                    <span>Следи за временем</span>
+                </li>
+                <li class="start_screen_list-item">
+                    <img src="src/correct.svg" alt="">
+                    <span>Решай задачи</span>
+                </li>
+                <li class="start_screen_list-item">
+                    <img src="src/result.svg" alt="">
+                    <span>Получай результат</span>
+                </li>
+            </ul>
+        </div>
+
+        <button class="btn" id="start_button">
+            <div class="wrapper">
+                старт
+            </div>
+        </button>
     </section>
 
     <section class="main_screen screen" id="main_screen">
@@ -27,7 +52,11 @@
     <section class="result_screen screen" id="result_screen">
        <p id="score_label">Верных ответов:</p>
        <h1 id="score"></h1>
-       <button class="btn" id="restart_button">Заново</button>
+       <button class="btn" id="restart_button">
+            <div class="wrapper">
+                Заново
+            </div>
+        </button>
     </section>
 
     
